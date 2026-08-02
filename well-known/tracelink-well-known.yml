@@ -1,0 +1,60 @@
+generated: '2026-08-02'
+method: searched
+source: live probes of the TraceLink web, docs, and API hosts
+note: >-
+  opus.tracelink.com is a single-page application served from S3/CloudFront that
+  answers HTTP 200 with the same 940-byte HTML shell for every path, including
+  every /.well-known/* path. Those 200s are catch-all false positives and are
+  recorded as such rather than as discovery documents.
+hosts:
+- host: https://www.tracelink.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    file: tracelink-security.txt
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://api.tracelink.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://opus.tracelink.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    catch_all: true
+    note: SPA shell, not a security.txt
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    catch_all: true
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    catch_all: true
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    catch_all: true
+    note: rejected — HTML body, not an AgentCard
+other:
+- path: https://www.tracelink.com/llms.txt
+  status: 200
+  content_type: text/markdown
+  file: ../llms/tracelink-llms.txt

@@ -1,0 +1,96 @@
+generated: '2026-08-02'
+method: searched
+source: live ?wsdl retrieval from https://api.tracelink.com (production)
+description: >-
+  TraceLink serves WSDL 1.1 documents anonymously from its production API host. These are
+  the provider's own machine-readable contracts — no OpenAPI is published, so the WSDLs
+  plus the canonical JSON Schemas in json-schema/ are the machine-readable surface.
+  Identical WSDLs are served from the validation host itestapi.tracelink.com.
+toolkit: JAX-WS RI 2.3.6
+services:
+- file: tracelink-serialized-operations-manager.wsdl
+  service: SOMService
+  soap_address: https://api.tracelink.com/soap/som
+  validation_address: https://itestapi.tracelink.com/soap/som
+  source_url: https://api.tracelink.com/soap/som?wsdl
+  http_status: 200
+  content_type: text/xml;charset=utf-8
+  bytes: 27680
+  operation_count: 40
+  operations:
+  - Aggregate
+  - AggregateUpdate
+  - ChangeDeliveryNumber
+  - CheckAsyncSalesComplete
+  - Commission
+  - Decommission
+  - DeleteOrder
+  - Destroy
+  - Disaggregate
+  - FetchLotStatusResult
+  - FetchRegisterResult
+  - FetchSerialNumberHierarchyResult
+  - FetchUpdateOrderReceiptResult
+  - FindDeliveryNumbers
+  - GetLotQuantity
+  - GetLotStatus
+  - GetOrder
+  - GetReceipt
+  - GetSEMeta
+  - GetSerialNumberHierarchy
+  - GetSerializedEntities
+  - GetSerializedEntity
+  - GetSerializedEntityWithProduct
+  - LaunchAsyncUpdateOrderSales
+  - LaunchAsyncUpdateOrderShipment
+  - ListOpenOrdersAndReceipts
+  - MarketRelease
+  - Register
+  - ReleaseProduct
+  - ResetAggregation
+  - SerialNumberVerification
+  - SetSerialNumberStatus
+  - TakeSample
+  - UpdateOrderPurchase
+  - UpdateOrderReceipt
+  - UpdateOrderSales
+  - UpdateOrderSalesAsynchronously
+  - UpdateOrderShipment
+  - UpdateOrderShipmentAsynchronously
+  - VoidShipment
+- file: tracelink-product-track.wsdl
+  service: ProductTrackService
+  soap_address: https://api.tracelink.com/soap/producttrack
+  validation_address: https://itestapi.tracelink.com/soap/producttrack
+  source_url: https://api.tracelink.com/soap/producttrack?wsdl
+  http_status: 200
+  content_type: text/xml;charset=utf-8
+  bytes: 2997
+  operation_count: 2
+  operations: [PickShip, PickShipBasic]
+- file: tracelink-serial-number-exchange.wsdl
+  service: SerialNumberRequestService
+  soap_address: https://api.tracelink.com/soap/snx/snrequest
+  validation_address: https://itestapi.tracelink.com/soap/snx/snrequest
+  source_url: https://api.tracelink.com/soap/snx/snrequest?wsdl
+  http_status: 200
+  content_type: text/xml;charset=utf-8
+  bytes: 2225
+  operation_count: 1
+  operations: [serialNumbersRequest]
+totals:
+  services: 3
+  operations: 43
+x-evidence:
+  fetched: '2026-08-02'
+  hosts_probed:
+  - https://api.tracelink.com
+  - https://itestapi.tracelink.com
+  paths_probed:
+  - /soap/som?wsdl
+  - /soap/producttrack?wsdl
+  - /soap/snx/snrequest?wsdl
+  - /soap/pim?wsdl (404)
+  - /soap/sne?wsdl (404)
+  - /soap/compliance?wsdl (404)
+  - /soap/inventory?wsdl (404)

@@ -1,0 +1,77 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  https://opus.tracelink.com/documentation/2026.1/en-US/api/administration/pdfs/admin_api_guide_2026.1.pdf
+  and https://opus.tracelink.com/documentation/2026.1/en-US/api/compliance-reporting/async/pdfs/comp_api_guide_2026.1.pdf
+spec_type: none
+asyncapi_published: false
+webhooks_published: false
+summary: >-
+  TraceLink has a large, real asynchronous surface, but it is inter-enterprise MESSAGE
+  EXCHANGE rather than HTTP webhooks and it is not described by an AsyncAPI document.
+  Messages flow inbound and outbound between an Owner's enterprise systems and its trade
+  partners over AS2 mailboxes, SFTP directories, or an HTTP POST upload location, with a
+  named Message Type selecting the flow. Because TraceLink does not register HTTP
+  callback URLs and publishes no AsyncAPI, neither a `Webhooks` nor an `AsyncAPI`
+  pointer is emitted — the surface is recorded here as it actually works.
+channels:
+- name: AS2
+  standard: Applicability Statement 2 (RFC 4130)
+  routing: The Message Type travels in the AS2 header (e.g. SOM_DESTROY_EVENT).
+- name: SFTP
+  routing: The Message Type is the folder in which the message is saved.
+- name: HTTP POST
+  endpoint: 'https://prodb2b.tracelink.com:5443/server?request=send&directory=inbox/<MESSAGE_TYPE>&filename=<filename>'
+  routing: The Message Type is part of the URL.
+  direction: inbound upload to TraceLink
+limits:
+  inbound_file_size: 300 MB per asynchronous message sent inbound to TraceLink
+processing_model: >-
+  An Owner sends a message in its own preferred format; TraceLink translates and stores
+  it, then reformats it into an outbound message for the Partner in the Partner's
+  preferred format. Failures surface as coded errors in the per-message Errors Tables
+  and are recoverable by operators through Park and Retry or Reprocess.
+message_families:
+- family: Administration
+  guide: https://opus.tracelink.com/documentation/2026.1/en-US/api/administration/pdfs/admin_api_guide_2026.1.pdf
+  covers: company, network node, partner, product, and master data administration messages
+- family: Compliance Reporting
+  guide: https://opus.tracelink.com/documentation/2026.1/en-US/api/compliance-reporting/async/pdfs/comp_api_guide_2026.1.pdf
+  covers: national regulator reporting flows (EU/NMVS, Russia, Saudi Arabia, South Korea, Brazil, India and others)
+  observed_message_types:
+  - EU_INT_PRODUCT_PACK_REPORT_CALLBACK
+  - SA_PTS_UPLOAD
+  - SA_PTS_UPLOAD_PROCESSING
+  - SA_PTS_DOWNLOAD
+  - SA_PTS_DOWNLOAD_PROCESSING
+  - RU_SHIPMENT_NOTIFICATION
+- family: Serialized Operations Manager
+  guide: https://opus.tracelink.com/documentation/2026.1/en-US/api/som/async/epcis/pdfs/som_epcis_api_guide_2026.1.pdf
+  covers: asynchronous EPCIS trade partner event exchange
+  observed_message_types:
+  - SOM_DESTROY_EVENT
+- family: Processing Response
+  guide: https://opus.tracelink.com/documentation/2026.1/en-US/api/processing-response/pdfs/process_resp_api_guide_2026.1.pdf
+  covers: acknowledgment and processing-result messages returned for submitted files
+- family: Production Tracking / Delivery Tracking / Inventory
+  guides:
+  - https://opus.tracelink.com/documentation/2026.1/en-US/api/prod-tracking-po/pdfs/ptpo_api_guide_2026.1.pdf
+  - https://opus.tracelink.com/documentation/2026.1/en-US/api/prod-tracking-mo/pdfs/ptmpo_api_guide_2026.1.pdf
+  - https://opus.tracelink.com/documentation/2026.1/en-US/api/prod-delivery-tracking/pdfs/dt_api_guide_2026.1.pdf
+  - https://opus.tracelink.com/documentation/2026.1/en-US/api/prod-inventory/pdfs/pt_inventory_api_guide_2026.1.pdf
+message_payloads:
+  canonical_schemas: json-schema/
+  count: 37
+  note: >-
+    The canonical object schemas in json-schema/ are the payload contracts for the MINT
+    /multienterprise-process-connect message families (purchase orders, invoices, ship
+    notices, inventory, forecasts, remittances, returns) and for the B2B transaction
+    processor acknowledgments.
+gap:
+  repo: https://github.com/tracelink/tracelink-asyncapi
+  description: >-
+    TraceLink created a public repository described as "guides and code samples
+    developer customers will use as an asyncapi primer for working with the Opus API",
+    but as of this probe the default branch contains only a LICENSE file. The intent to
+    publish an AsyncAPI description exists; the document does not.
+  probed: '2026-08-02'

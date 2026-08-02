@@ -1,0 +1,273 @@
+generated: '2026-08-02'
+method: searched
+source: https://github.com/tracelink/code-samples/tree/main/canonicals
+license: MIT (repository LICENSE), Copyright (c) 2022 TraceLink
+description: TraceLink canonical object schemas — the JSON Schema (draft-04) payload contracts for the
+  OPUS B2B message families. Harvested verbatim from TraceLink’s own public code-samples repository and
+  stored one file per canonical object version.
+count: 37
+applications:
+  b2b-transaction-processor: 2
+  common-traceability-application: 2
+  integrated-business-network: 1
+  multienterprise-process-connect: 32
+schemas:
+- file: b2b-transaction-processor_canonicalAcknowledgmentResponse_v1.json
+  application: b2b-transaction-processor
+  id: b2b-transaction-processor:canonicalAcknowledgmentResponse
+  object_type: b2b-transaction-processor:canonicalAcknowledgmentResponse
+  name: Canonical Acknowledgment Response
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: b2b-transaction-processor_canonicalProcessingAcknowledgment_v1.json
+  application: b2b-transaction-processor
+  id: b2b-transaction-processor:canonicalProcessingAcknowledgment
+  object_type: b2b-transaction-processor:canonicalProcessingAcknowledgment
+  name: Canonical Processing Acknowledgment
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: common-traceability-application_canonicalReportSalesShipment_v1.json
+  application: common-traceability-application
+  id: common-traceability-application:canonicalReportSalesShipment
+  object_type: common-traceability-application:canonicalReportSalesShipment
+  name: Canonical Report Sales Shipment
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: common-traceability-application_canonicalReportSalesShipment_v3.json
+  application: common-traceability-application
+  id: common-traceability-application:canonicalReportSalesShipment
+  object_type: common-traceability-application:canonicalReportSalesShipment
+  name: Canonical Report Sales Shipment
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: integrated-business-network_canonicalSerializedShipmentNotice_v1.json
+  application: integrated-business-network
+  id: integrated-business-network:canonicalSerializedShipmentNotice:v1
+  object_type: integrated-business-network:canonicalSerializedShipmentNotice:v1
+  name: Canonical Serialized Shipment Notice
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalAdvanceShipNotice_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalAdvanceShipNotice
+  object_type: multienterprise-process-connect:canonicalAdvanceShipNotice
+  name: Canonical Advance Ship Notice
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalAdvanceShipNotice_v4.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalAdvanceShipNotice
+  object_type: multienterprise-process-connect:canonicalAdvanceShipNotice
+  name: Canonical Advance Ship Notice
+  data_version: 4
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalBatchMaster_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalBatchMaster
+  object_type: multienterprise-process-connect:canonicalBatchMaster
+  name: Canonical Batch Master
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalCreditDebitAdjustment_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalCreditDebitAdjustment
+  object_type: multienterprise-process-connect:canonicalCreditDebitAdjustment
+  name: Canonical Credit Debit Adjustment
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalForecastPlanResponse_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalForecastPlanResponse
+  object_type: multienterprise-process-connect:canonicalForecastPlanResponse
+  name: Canonical Forecast Plan Response
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalForecastPlan_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalForecastPlan
+  object_type: multienterprise-process-connect:canonicalForecastPlan
+  name: Canonical Forecast Plan
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalForecastPlan_v2.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalForecastPlan
+  object_type: multienterprise-process-connect:canonicalForecastPlan
+  name: Canonical Forecast Plan
+  data_version: 2
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalInventoryBalance_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalInventoryBalance
+  object_type: multienterprise-process-connect:canonicalInventoryBalance
+  name: Canonical Inventory Balance
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalInventoryBalance_v2.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalInventoryBalance
+  object_type: multienterprise-process-connect:canonicalInventoryBalance
+  name: Canonical Inventory Balance
+  data_version: 2
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalInventoryUpdate_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalInventoryUpdate
+  object_type: multienterprise-process-connect:canonicalInventoryUpdate
+  name: Canonical Inventory Update
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalInventoryUpdate_v2.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalInventoryUpdate
+  object_type: multienterprise-process-connect:canonicalInventoryUpdate
+  name: Canonical Inventory Update
+  data_version: 2
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalInvoice_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalInvoice
+  object_type: multienterprise-process-connect:canonicalInvoice
+  name: Canonical Invoice
+  data_version: 2
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalInvoice_v2.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalInvoice
+  object_type: multienterprise-process-connect:canonicalInvoice
+  name: Canonical Invoice
+  data_version: 4
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalInvoice_v4.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalInvoice
+  object_type: multienterprise-process-connect:canonicalInvoice
+  name: Canonical Invoice
+  data_version: 4
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalPaymentRemittance_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalPaymentRemittance
+  object_type: multienterprise-process-connect:canonicalPaymentRemittance
+  name: Canonical Payment Remittance
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalPaymentRemittance_v2.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalPaymentRemittance
+  object_type: multienterprise-process-connect:canonicalPaymentRemittance
+  name: Canonical Payment Remittance
+  data_version: 2
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalPriceSalesCatalog_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalPriceSalesCatalog
+  object_type: multienterprise-process-connect:canonicalPriceSalesCatalog
+  name: Canonical Price Sales Catalog
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalPriceSalesCatalog_v2.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalPriceSalesCatalog
+  object_type: multienterprise-process-connect:canonicalPriceSalesCatalog
+  name: Canonical Price Sales Catalog
+  data_version: 2
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalProductActivity_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalProductActivity
+  object_type: multienterprise-process-connect:canonicalProductActivity
+  name: canonical Product Activity
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalPurchaseOrderAcknowledgement_v3.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalPurchaseOrderAcknowledgement
+  object_type: multienterprise-process-connect:canonicalPurchaseOrderAcknowledgement
+  name: Canonical Purchase Order Acknowledgement
+  data_version: 3
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalPurchaseOrder_v3.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalPurchaseOrder
+  object_type: multienterprise-process-connect:canonicalPurchaseOrder
+  name: Canonical Purchase Order
+  data_version: 3
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalPurchaseOrder_v4.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalPurchaseOrder
+  object_type: multienterprise-process-connect:canonicalPurchaseOrder
+  name: Canonical Purchase Order
+  data_version: 4
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalReturnAuthorization_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalReturnAuthorization
+  object_type: multienterprise-process-connect:canonicalReturnAuthorization
+  name: Canonical Return Authorization
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalSerializedShipmentNotice_v3.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalSerializedShipmentNotice
+  object_type: multienterprise-process-connect:canonicalSerializedShipmentNotice
+  name: Canonical Serialized Shipment Notice
+  data_version: 3
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalWarehouseShipAdvice_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalWarehouseShipAdvice
+  object_type: multienterprise-process-connect:canonicalWarehouseShipAdvice
+  name: Canonical Warehouse Ship Advice
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalWarehouseShipAdvice_v3.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalWarehouseShipAdvice
+  object_type: multienterprise-process-connect:canonicalWarehouseShipAdvice
+  name: Canonical Warehouse Ship Advice
+  data_version: 3
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalWarehouseShipOrder_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalWarehouseShipOrder
+  object_type: multienterprise-process-connect:canonicalWarehouseShipOrder
+  name: Canonical Warehouse Ship Order
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalWarehouseStockTransferReceiptAdvice_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalWarehouseStockTransferReceiptAdvice
+  object_type: multienterprise-process-connect:canonicalWarehouseStockTransferReceiptAdvice
+  name: Canonical Warehouse Stock Transfer Receipt Advice
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalWarehouseStockTransferReceiptAdvice_v2.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalWarehouseStockTransferReceiptAdvice
+  object_type: multienterprise-process-connect:canonicalWarehouseStockTransferReceiptAdvice
+  name: Canonical Warehouse Stock Transfer Receipt Advice
+  data_version: 2
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalWarehouseStockTransferReceiptAdvice_v3.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalWarehouseStockTransferReceiptAdvice
+  object_type: multienterprise-process-connect:canonicalWarehouseStockTransferReceiptAdvice
+  name: Canonical Warehouse Stock Transfer Receipt Advice
+  data_version: 3
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalWarehouseStockTransferShipAdvice_v1.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalWarehouseStockTransferShipAdvice
+  object_type: multienterprise-process-connect:canonicalWarehouseStockTransferShipAdvice
+  name: Canonical Warehouse Stock Transfer Ship Advice
+  data_version: 1
+  json_schema_draft: http://json-schema.org/draft-04/schema#
+- file: multienterprise-process-connect_canonicalWarehouseStockTransferShipAdvice_v3.json
+  application: multienterprise-process-connect
+  id: multienterprise-process-connect:canonicalWarehouseStockTransferShipAdvice
+  object_type: multienterprise-process-connect:canonicalWarehouseStockTransferShipAdvice
+  name: Canonical Warehouse Stock Transfer Ship Advice
+  data_version: 3
+  json_schema_draft: http://json-schema.org/draft-04/schema#

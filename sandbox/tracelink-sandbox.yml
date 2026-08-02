@@ -1,0 +1,75 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  https://www.tracelink.com/opus-link-lab, the TraceLink API guides, the published
+  WSDL endpoints on itestapi.tracelink.com, and
+  https://github.com/tracelink/code-samples
+summary: >-
+  TraceLink separates test from live by ENVIRONMENT, not by key prefix or a mode flag.
+  Every customer gets a Validation tenant alongside Production (a computer-system
+  validation requirement in life sciences), and TraceLink additionally runs OPUS Link
+  Lab as a hands-on sandbox for customers and partners. There are no published magic
+  test values — no test cards, test identifiers, or hosted test tokens — because the
+  objects under test are the customer's own serialized products and trade partners.
+environments:
+- name: Production
+  api_host: https://api.tracelink.com
+  app_host: https://opus.tracelink.com
+  b2b_host: 'https://prodb2b.tracelink.com:5443'
+  live: true
+- name: Validation
+  api_host: https://itestapi.tracelink.com
+  app_host: https://valvir-opus.tracelink.com
+  live: false
+  description: >-
+    Integration/validation environment. TraceLink's own SOAP guides point integrators at
+    itestapi.tracelink.com for the WSDLs, and the first-party code samples target
+    https://valvir-opus.tracelink.com/api/events and /api/graphql.
+  evidence:
+  - 'https://itestapi.tracelink.com/soap/som?wsdl (HTTP 200, text/xml)'
+  - 'https://itestapi.tracelink.com/soap/producttrack?wsdl (HTTP 200, text/xml)'
+  - 'https://itestapi.tracelink.com/soap/snx/snrequest?wsdl (HTTP 200, text/xml)'
+  - https://github.com/tracelink/code-samples/blob/main/authentication.md
+sandbox_program:
+  name: OPUS Link Lab (OLL)
+  url: https://www.tracelink.com/opus-link-lab
+  audience: TraceLink customers, solution partners, and technology partners
+  description: >-
+    Secure hands-on access to the OPUS no-code platform capabilities for designing,
+    testing, and launching multienterprise solutions — including validating data flows
+    between OPUS and external ERP, WMS, and 3PL systems using MINT, Transforms, and
+    Link Actions.
+  access: Requested through TraceLink; not self-service signup.
+local_test_tooling:
+- name: xtt-link-actions-sandbox
+  url: https://github.com/tracelink/xtt-link-actions-sandbox
+  description: Local testing environment that mimics the XTT Link Action Framework.
+  language: JavaScript
+  official: true
+- name: xtt-link-actions-test-tool
+  url: https://github.com/tracelink/xtt-link-actions-test-tool
+  description: Tests Link Action functionality locally by routing calls through the ERP system.
+  language: JavaScript
+  official: true
+fixtures:
+- name: Payload templates
+  url: https://github.com/tracelink/code-samples/tree/main/payload_samples
+  description: >-
+    First-party JSON request-body templates for every documented Agile Process Teams
+    event (incidents, change requests, tasks, task templates, master data, shared
+    comment/history operations) — minimum-field and all-field variants.
+- name: Canonical object schemas
+  url: https://github.com/tracelink/code-samples/tree/main/canonicals
+  description: 37 canonical JSON Schemas defining the B2B message objects; mirrored to json-schema/.
+test_values:
+  published: false
+  note: >-
+    No test card numbers, magic identifiers, or hosted test tokens are published, and
+    none were invented. Credentials for both Production and Validation are issued by the
+    customer's TraceLink implementation team.
+onboarding:
+  note: >-
+    "Users that might integrate via API should work with their TraceLink implementation
+    team to help configure their system and receive the appropriate endpoints and
+    authentication information." — OPUS Platform FAQs.
+  url: https://www.tracelink.com/resources/tracelink-university/opus-platform-faqs

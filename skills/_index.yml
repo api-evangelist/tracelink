@@ -1,0 +1,32 @@
+generated: '2026-08-02'
+method: generated
+x-authored-by: API Evangelist enrichment pipeline (not TraceLink-published)
+source: >-
+  wsdl/ (3 published WSDLs, 43 operations) and
+  https://github.com/tracelink/code-samples/blob/main/EventNames.MD
+note: >-
+  TraceLink publishes no AGENTS.md or skill files of its own — searched 2026-08-02 across
+  tracelink.com, opus.tracelink.com/documentation, and github.com/tracelink. These skills
+  are grounded only in operation names verified verbatim in the published WSDLs and in
+  TraceLink's own EventNames.MD; no operation or event name here was invented.
+skills:
+- file: tracelink-verify-serial-number.md
+  name: Verify a TraceLink serial number and read its hierarchy
+  api: wsdl/tracelink-serialized-operations-manager.wsdl
+  operations: [SerialNumberVerification, GetSerializedEntity, GetSerializedEntityWithProduct, GetSerialNumberHierarchy, FetchSerialNumberHierarchyResult, GetLotStatus]
+- file: tracelink-record-serialized-shipment.md
+  name: Commission, aggregate, and ship serialized product through TraceLink
+  api: wsdl/tracelink-serialized-operations-manager.wsdl
+  operations: [serialNumbersRequest, Commission, Aggregate, AggregateUpdate, Disaggregate, UpdateOrderShipment, UpdateOrderShipmentAsynchronously, LaunchAsyncUpdateOrderShipment, UpdateOrderReceipt, FetchUpdateOrderReceiptResult, ListOpenOrdersAndReceipts, VoidShipment]
+- file: tracelink-open-supplier-incident.md
+  name: Open and work a direct supplier incident in Agile Process Teams
+  api: OPUS Platform Event API (https://opus.tracelink.com/api/events)
+  operations:
+  - 'agile-process-teams:add-direct-supplier-incident:v3'
+  - 'agile-process-teams:edit-direct-supplier-incident:v3'
+  - 'agile-process-teams:add-comment-for-incident:v1'
+  - 'agile-process-teams:list-comments-for-incident:v1'
+  - 'agile-process-teams:submit-direct-supplier-incident-to-partner:v1'
+  - 'agile-process-teams:get-activity-history-for-incident:v1'
+  - 'agile-process-teams:close-direct-supplier-incident:v2'
+  - 'agile-process-teams:reopen-direct-supplier-incident:v1'

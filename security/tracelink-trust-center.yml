@@ -1,0 +1,44 @@
+generated: '2026-08-02'
+method: searched
+probe: false
+source: >-
+  https://www.tracelink.com/legal-and-trust-center and TraceLink news-room
+  announcements of its audit results
+url: https://www.tracelink.com/legal-and-trust-center
+pages:
+- name: Legal and Trust Center
+  url: https://www.tracelink.com/legal-and-trust-center
+- name: Certifications and Attestations
+  url: https://www.tracelink.com/legal-and-trust/certifications-and-attestations
+- name: Supplier Assurance
+  url: https://www.tracelink.com/legal-and-trust/supplier-assurance
+- name: Vulnerability Disclosure Policy
+  url: https://www.tracelink.com/legal-and-trust/vulnerability-disclosure-policy
+- name: Acceptable Use Policy
+  url: https://www.tracelink.com/legal-and-trust/acceptable-use-policy
+- name: Privacy Policy
+  url: https://www.tracelink.com/legal-and-trust/privacy-policy
+certifications:
+- ISO/IEC 27001:2022
+- ISO/IEC 27017:2015
+- ISO 9001:2015
+- SOC 2 Type II
+- ISAE 3000 Type II
+- CyberVadis
+assessor: A-LIGN
+soc2_scope: Common Criteria/Security, Availability, and Confidentiality Trust Services Criteria
+evidence:
+- source: https://www.tracelink.com/about/news-room/tracelink-successfully-completes-industry-leading-audits-isoiec-270012022-isoiec
+  keywords: [iso/iec 27001:2022, iso/iec 27017:2015, soc 2, isae 3000 type ii, cybervadis]
+- source: https://www.tracelink.com/about/news-room/tracelink-updates-iso-9001-certification-support-scalable-compliant-supply-chain
+  keywords: [iso 9001:2015]
+- source: https://www.tracelink.com/about/news-room/tracelink-earns-top-tier-iso-soc-and-cybervadis-results-confirming-its-position
+  keywords: [iso, soc, cybervadis]
+- source: https://www.tracelink.com/llms.txt
+  keywords: [certifications and attestations, supplier assurance, legal and trust center]
+x-note: >-
+  www.tracelink.com sits behind a Cloudflare interactive challenge that returns 403 to
+  automated fetchers, so the certifications page body could not be retrieved directly.
+  Page existence is confirmed by TraceLink's own /llms.txt inventory (HTTP 200) and by
+  its news-room announcements; the certification list is taken from those first-party
+  announcements rather than inferred.

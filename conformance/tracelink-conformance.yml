@@ -1,0 +1,123 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  TraceLink API guides (opus.tracelink.com/documentation/2026.1), the published WSDLs
+  on api.tracelink.com, the canonical JSON Schemas in
+  https://github.com/tracelink/code-samples, and TraceLink press releases on
+  certifications and GS1 conformance.
+standards:
+- id: soap-1.1
+  conforms: true
+  evidence: >-
+    Three WSDL 1.1 documents served publicly at api.tracelink.com/soap/{som,producttrack,snx/snrequest}?wsdl
+    bind to http://schemas.xmlsoap.org/soap/envelope/ (JAX-WS RI 2.3.6).
+- id: wsdl-1.1
+  conforms: true
+  evidence: wsdl/tracelink-serialized-operations-manager.wsdl, wsdl/tracelink-product-track.wsdl, wsdl/tracelink-serial-number-exchange.wsdl
+- id: json-schema-draft-04
+  conforms: true
+  evidence: >-
+    All 37 published canonical object schemas declare
+    "$schema": "http://json-schema.org/draft-04/schema#" (json-schema/).
+- id: gs1-epcis-1.2
+  conforms: true
+  evidence: >-
+    EPCIS 1.2 message types are documented across the B2B integration surface
+    (SOM ESM Set Recall Status, SOM Product Release) and the SOM Trade Partner Event
+    Exchange API Guide covers asynchronous EPCIS messages; the SOAP guide declares
+    the namespaces http://www.gs1.org/epcis and http://epcis.tracelink.com/ns.
+- id: gs1-us-dscsa-conformance-trustmarks
+  conforms: true
+  evidence: >-
+    "TraceLink Becomes First Solution Provider to Secure All 16 GS1 US Conformance
+    Trustmarks for EPCIS File Support" —
+    https://www.tracelink.com/about/news-room/tracelink-becomes-first-solution-provider-secure-all-16-gs1-us-conformance
+- id: un-cefact-sbdh
+  conforms: true
+  evidence: >-
+    Standard Business Document Header namespace
+    http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader is used in the
+    SOM SOAP/EPCIS message envelopes.
+- id: rfc7617-http-basic
+  conforms: true
+  evidence: >-
+    Smart Event Manager and the SOAP services authenticate with HTTP Basic; the SOAP
+    guide cites https://tools.ietf.org/html/rfc7617.
+- id: as2-rfc4130
+  conforms: true
+  evidence: >-
+    Applicability Statement 2 (AS2) is one of the three documented B2B connection
+    types; the Message Type travels in the AS2 header.
+- id: edi-ansi-x12
+  conforms: true
+  evidence: >-
+    Published transaction pages cover X12 214, 845, 870 and others under
+    /orchestration-integration-transactions/.
+- id: sap-idoc
+  conforms: true
+  evidence: >-
+    Documented IDoc integrations include ORDRSP.ORDERS05 and LOIPRO04 under
+    /orchestration-integration-transactions/.
+- id: us-dscsa
+  conforms: true
+  evidence: >-
+    Product Track US and the DSCSA product line implement the US Drug Supply Chain
+    Security Act; https://www.tracelink.com/products/product-orchestration/country-compliance/us-compliance
+- id: eu-fmd
+  conforms: true
+  evidence: >-
+    NMVS Compliance application manages EU Falsified Medicines Directive reporting to
+    national medicines verification systems.
+- id: iso-27001-2022
+  conforms: true
+  evidence: >-
+    Certified since 2018 and updated to ISO/IEC 27001:2022 (inclusive of ISO/IEC
+    27017:2015 controls), assessed by A-LIGN.
+- id: iso-27017-2015
+  conforms: true
+  evidence: Cloud-specific controls included in the ISO/IEC 27001:2022 certification scope.
+- id: iso-9001-2015
+  conforms: true
+  evidence: >-
+    https://www.tracelink.com/about/news-room/tracelink-updates-iso-9001-certification-support-scalable-compliant-supply-chain
+- id: soc2-type-ii
+  conforms: true
+  evidence: >-
+    SOC 2 / ISAE 3000 Type II attestation covering the Common Criteria/Security,
+    Availability, and Confidentiality Trust Services Criteria.
+- id: cybervadis
+  conforms: true
+  evidence: >-
+    https://www.tracelink.com/about/news-room/tracelink-successfully-completes-industry-leading-audits-isoiec-270012022-isoiec
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: >-
+    https://www.tracelink.com/.well-known/security.txt returns 200 with Contact,
+    Expires, Encryption, and Policy fields.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 surface is documented; every API authenticates with HTTP Basic.
+- id: openid-connect
+  conforms: false
+  evidence: No /.well-known/openid-configuration on any TraceLink API host (404).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors are returned on the vendor JSON envelope header (isErr/errCode), not as
+    application/problem+json.
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI or Swagger document is published. Probed /openapi.json, /openapi.yaml,
+    /swagger.json, /v1/openapi.json, /api-docs, /docs and /redoc on api.tracelink.com
+    (all 404) and on opus.tracelink.com (SPA catch-all HTML). The machine-readable
+    contract TraceLink does publish is WSDL plus canonical JSON Schema.
+- id: asyncapi
+  conforms: false
+  evidence: >-
+    The github.com/tracelink/tracelink-asyncapi repository is described as an AsyncAPI
+    primer for the Opus API but contains only a LICENSE file — no AsyncAPI document
+    has been published.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset/Deprecation header support is documented.

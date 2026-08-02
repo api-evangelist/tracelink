@@ -1,0 +1,70 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  https://opus.tracelink.com/documentation/ version tree (probed) and TraceLink
+  "What's new" release pages
+versioning:
+  platform:
+    scheme: calendar release train
+    format: YYYY.N
+    current: '2026.1'
+    observed_versions: ['2024.3', '2024.4', '2024.6', '2025.1', '2025.3', '2025.4', '2025.5', '2026.1']
+    docs: https://opus.tracelink.com/documentation/
+    note: >-
+      Every API guide is published per release under
+      /documentation/<version>/en-US/api/<app>/pdfs/. Older release trees stay online,
+      so a customer can pin documentation to the release their tenant runs.
+  operations:
+    scheme: version suffix on the fully qualified event name
+    format: '<app>:<action>:v<N>'
+    example: 'agile-process-teams:add-direct-supplier-incident:v3'
+    note: >-
+      Operations version independently — within one app, add is at v3 while reopen is
+      still v1 — so versions are pinned per event, not per API.
+  schemas:
+    scheme: dataVersion on each canonical object
+    note: Canonical objects publish multiple concurrent dataVersions (e.g. canonicalInvoice v1, v2, v4).
+  documentation_channels:
+    val: https://opus.tracelink.com/documentation/val/    # validation environment docs
+    preview: https://opus.tracelink.com/documentation/preview/
+    prod: https://opus.tracelink.com/documentation/prod/
+environments:
+- name: Production
+  api_host: https://api.tracelink.com
+  b2b_host: 'https://prodb2b.tracelink.com:5443'
+  app: https://opus.tracelink.com
+- name: Validation
+  api_host: https://itestapi.tracelink.com
+  app: https://valvir-opus.tracelink.com
+  note: >-
+    Releases are announced as "available on Validation and Production" on the same
+    date, giving customers a like-for-like validation tenant — a regulated-industry
+    requirement (computer system validation) rather than a developer sandbox.
+release_cadence:
+  observed: >-
+    Point releases ship roughly weekly inside a train (Orff 2025.1.12 on 29 Jul 2025,
+    2025.1.13 on 07 Aug 2025, 2025.1.14 on 14 Aug 2025); major trains are quarterly.
+  evidence: https://opus.tracelink.com/documentation/val/en-US/opus_platform_ux/Content/topics/whats_new/plat_2025_01_release_info.htm
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No public deprecation or sunset policy was found, and no RFC 8594 Sunset/Deprecation
+    header support is documented. Version retirement is handled through the
+    customer/implementation-team relationship rather than a published policy, so no
+    Deprecation pointer is emitted.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    Availability is in scope of TraceLink's SOC 2 Type II attestation, but no public
+    uptime target or SLA document was found.
+status_page:
+  url: null
+  note: >-
+    status.tracelink.com resolves in DNS to an AWS ELB fronting Grafana
+    (prodops-grafana-lb-…us-east-1.elb.amazonaws.com) but does not serve over HTTP or
+    HTTPS to the public internet (connection failure, curl exit code 0 bytes). There is
+    no publicly reachable status page, so no StatusPage pointer is emitted.
+  probed: '2026-08-02'
+deprecated_operations: []

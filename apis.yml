@@ -1,23 +1,198 @@
 aid: tracelink
 name: TraceLink
-description: 'TraceLink is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'TraceLink, Inc. is a Massachusetts-based supply chain digitalization company for the life
+  sciences and healthcare industries, best known for pharmaceutical serialization and track-and-trace
+  compliance (US DSCSA, EU FMD, and roughly two dozen national regimes) delivered on its multienterprise
+  OPUS network platform. TraceLink exposes several distinct integration surfaces rather than one REST
+  API: a set of publicly served SOAP/WSDL services on api.tracelink.com (Serialized Operations Manager,
+  Product Track, Serial Number Exchange), a synchronous REST API for Smart Event Manager, an event-driven
+  OPUS Platform API where every call is a POST to a single /api/events endpoint carrying a header/payload
+  envelope keyed by a fully qualified eventName, a GraphQL endpoint at /api/graphql used by the Agile
+  Process Teams app, and asynchronous B2B message exchange over AS2, SFTP, and HTTP POST using EPCIS,
+  EDI ANSI X12, SAP IDoc, and TraceLink XML canonical documents. Its published API guides, canonical JSON
+  Schemas, and code samples are the machine-readable surface catalogued here.'
 url: https://raw.githubusercontent.com/api-evangelist/tracelink/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-02'
 modified: '2026-08-02'
+image: https://www.tracelink.com/themes/custom/tracelink/logo.svg
 tags:
 - Company
-apis: []
+- Supply Chain
+- Pharmaceuticals
+- Life Sciences
+- Serialization
+- Track and Trace
+- Compliance
+- Healthcare
+- EPCIS
+- Logistics
+- B2B Integration
+apis:
+- aid: tracelink:serialized-operations-manager
+  name: TraceLink Serialized Operations Manager (SOAP)
+  description: 'SOAP web service for serialized operations: commissioning, aggregation, decommissioning,
+    shipment and receipt orders, serial number verification, lot status, market release, sampling, and
+    destruction. The WSDL is served publicly from the production API host and declares 40 operations.'
+  humanURL: https://opus.tracelink.com/documentation/2026.1/en-US/api/som/soap/pdfs/som_soap_api_guide_2026.1.pdf
+  baseURL: https://api.tracelink.com/soap/som
+  tags:
+  - Serialization
+  - SOAP
+  - Track and Trace
+  properties:
+  - type: WSDL
+    url: wsdl/tracelink-serialized-operations-manager.wsdl
+  - type: APIReference
+    url: https://opus.tracelink.com/documentation/2026.1/en-US/api/som/soap/pdfs/som_soap_api_guide_2026.1.pdf
+- aid: tracelink:product-track
+  name: TraceLink Product Track (SOAP)
+  description: SOAP web service supporting Product Track pick-and-ship operations for US DSCSA serialized
+    product movement. The WSDL is served publicly from the production API host and declares PickShip and
+    PickShipBasic.
+  humanURL: https://www.tracelink.com/products/product-orchestration/country-compliance/us-compliance
+  baseURL: https://api.tracelink.com/soap/producttrack
+  tags:
+  - DSCSA
+  - SOAP
+  - Track and Trace
+  properties:
+  - type: WSDL
+    url: wsdl/tracelink-product-track.wsdl
+- aid: tracelink:serial-number-exchange
+  name: TraceLink Serial Number Exchange (SOAP)
+  description: SOAP web service for requesting serial numbers from TraceLink Serial Number Exchange, used
+    by packaging lines and contract manufacturers to obtain serial number ranges. The WSDL is served publicly
+    from the production API host.
+  humanURL: https://www.tracelink.com/products/product-orchestration/serialization/serial-number-exchange
+  baseURL: https://api.tracelink.com/soap/snx/snrequest
+  tags:
+  - Serialization
+  - SOAP
+  properties:
+  - type: WSDL
+    url: wsdl/tracelink-serial-number-exchange.wsdl
+- aid: tracelink:smart-event-manager
+  name: TraceLink Smart Event Manager REST API
+  description: Synchronous JSON/REST API that acts as an event ledger for serial number observations across
+    pharmacy, warehouse, and supply chain activities. Supports Set Event, Get Event, and Get Result messages
+    with HTTP Basic authentication.
+  humanURL: https://opus.tracelink.com/documentation/2026.1/en-US/api/smart-event-manager/pdfs/smart_event_manager_api_guide_2026.1.pdf
+  baseURL: https://api.tracelink.com
+  tags:
+  - REST
+  - Serialization
+  - Verification
+  properties:
+  - type: APIReference
+    url: https://opus.tracelink.com/documentation/2026.1/en-US/api/smart-event-manager/pdfs/smart_event_manager_api_guide_2026.1.pdf
+- aid: tracelink:opus-events
+  name: TraceLink OPUS Platform Event API
+  description: The OPUS Platform exposes one /api/events endpoint per environment. Every operation is
+    a POST to that endpoint carrying a JSON envelope of header (headerVersion, eventName, ownerId, processNetworkId,
+    appName, dataspace) and payload. The fully qualified eventName selects the operation, e.g. agile-process-teams:add-direct-supplier-incident:v3.
+  humanURL: https://github.com/tracelink/code-samples
+  baseURL: https://opus.tracelink.com/api/events
+  tags:
+  - Event Driven
+  - REST
+  - Workflow
+  properties:
+  - type: Documentation
+    url: https://github.com/tracelink/code-samples/blob/main/python/FormatRequests.MD
+  - type: Examples
+    url: https://github.com/tracelink/code-samples/tree/main/payload_samples
+- aid: tracelink:opus-graphql
+  name: TraceLink OPUS GraphQL API
+  description: GraphQL endpoint used by the Agile Process Teams app, exposing genericActionCall and genericGetObject
+    fields that dispatch on an action name and a JSON payload. Introspection is authentication-gated;
+    the schema is not published.
+  humanURL: https://github.com/tracelink/code-samples/tree/main/GraphQL
+  baseURL: https://opus.tracelink.com/api/graphql
+  tags:
+  - GraphQL
+  - Workflow
+  properties:
+  - type: Examples
+    url: https://github.com/tracelink/code-samples/tree/main/GraphQL
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: VulnerabilityDisclosure
+  url: security/tracelink-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/tracelink-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/tracelink_stock/
+  url: https://www.tracelink.com/
+- type: DeveloperPortal
+  url: https://opus.tracelink.com/documentation/
+- type: Documentation
+  url: https://opus.tracelink.com/documentation/2026.1/en-US/som/Content/top_menu/api_guides.htm
+- type: APIReference
+  url: https://opus.tracelink.com/documentation/2026.1/en-US/api/smart-event-manager/pdfs/smart_event_manager_api_guide_2026.1.pdf
+- type: GettingStarted
+  url: https://github.com/tracelink/code-samples/blob/main/python/Quickstart.MD
+- type: GitHubOrganization
+  url: https://github.com/tracelink
+- type: Support
+  url: https://www.tracelink.com/support
+- type: Blog
+  url: https://www.tracelink.com/about/news-room
+- type: Pricing
+  url: https://www.tracelink.com/multienterprise-information-network-tower-mint-pricing
+- type: Login
+  url: https://opus.tracelink.com/
+- type: TermsOfService
+  url: https://www.tracelink.com/legal-and-trust/api-terms-of-use
+- type: PrivacyPolicy
+  url: https://www.tracelink.com/legal-and-trust/privacy-policy
+- type: Examples
+  url: https://github.com/tracelink/code-samples
+- type: WellKnown
+  url: well-known/tracelink-well-known.yml
+- type: SecurityTxt
+  url: well-known/tracelink-security.txt
+- type: Security
+  url: https://www.tracelink.com/legal-and-trust/vulnerability-disclosure-policy
+- type: TrustCenter
+  url: security/tracelink-trust-center.yml
+- type: Compliance
+  url: https://www.tracelink.com/legal-and-trust/certifications-and-attestations
+- type: Conformance
+  url: conformance/tracelink-conformance.yml
+- type: Authentication
+  url: authentication/tracelink-authentication.yml
+- type: Conventions
+  url: conventions/tracelink-conventions.yml
+- type: ErrorCatalog
+  url: errors/tracelink-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/tracelink-lifecycle.yml
+- type: ChangeLog
+  url: changelog/tracelink-changelog.yml
+- type: Sandbox
+  url: sandbox/tracelink-sandbox.yml
+- type: DataModel
+  url: data-model/tracelink-data-model.yml
+- type: JSONSchema
+  url: json-schema/_index.yml
+- type: WSDL
+  url: wsdl/_index.yml
+- type: EventSurface
+  url: asyncapi/tracelink-event-surface.yml
+- type: LLMsTxt
+  url: llms/tracelink-llms.txt
+- type: MCPServer
+  url: mcp/tracelink-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-08-02'
+  status: enriched
+  artifacts_added: 62
+  pass: local-v1

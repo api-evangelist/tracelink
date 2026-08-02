@@ -1,0 +1,236 @@
+generated: '2026-08-02'
+method: derived
+source: >-
+  json-schema/ (37 TraceLink canonical JSON Schemas), wsdl/ (3 published WSDLs), and
+  https://github.com/tracelink/code-samples/blob/main/EventNames.MD
+description: >-
+  TraceLink's object model has three distinct layers, and they are addressed by three
+  different surfaces. The SERIALIZATION layer (serial numbers, serialized entities, lots,
+  orders, receipts) is reached over SOAP. The MULTIENTERPRISE COMMERCE layer (purchase
+  orders, invoices, ship notices, inventory, forecasts) is expressed as canonical JSON
+  objects moved as B2B messages. The WORK MANAGEMENT layer (incidents, change requests,
+  tasks) is reached over the OPUS events and GraphQL surfaces. Everything is scoped by
+  the network tenancy triple of owner company, process network, and dataspace.
+tenancy:
+  entities:
+  - name: Owner Company
+    id_field: ownerId
+    description: The company that owns the process and the data.
+  - name: Process Network
+    id_field: processNetworkId
+    description: A network within the Owner company containing the process; partners are members.
+  - name: Dataspace
+    id_field: dataspace
+    description: Logical partition inside an environment (default value "default").
+  - name: Network Node
+    description: >-
+      A physical location, logical location, sub-location, organization, legal entity or
+      system — a plant, warehouse, or logical sub-division of a warehouse.
+  relationships:
+  - from: Process Network
+    to: Owner Company
+    type: belongs_to
+    via: ownerId
+  - from: Network Node
+    to: Owner Company
+    type: belongs_to
+  - from: Partner Company
+    to: Process Network
+    type: has_many
+    via: membership
+
+entities:
+- name: SerializedEntity
+  layer: serialization
+  surface: SOAP (SOMService)
+  description: A serialized object (item, case, pallet) tracked through its lifecycle.
+  operations: [Commission, Decommission, Destroy, GetSerializedEntity, GetSerializedEntities, GetSerializedEntityWithProduct, SetSerialNumberStatus, TakeSample]
+- name: SerialNumberHierarchy
+  layer: serialization
+  surface: SOAP (SOMService)
+  description: The parent/child aggregation tree over serialized entities.
+  operations: [Aggregate, AggregateUpdate, Disaggregate, ResetAggregation, GetSerialNumberHierarchy, FetchSerialNumberHierarchyResult]
+- name: Lot
+  layer: serialization
+  surface: SOAP (SOMService)
+  operations: [GetLotStatus, FetchLotStatusResult, GetLotQuantity]
+- name: Order
+  layer: serialization
+  surface: SOAP (SOMService)
+  operations: [GetOrder, DeleteOrder, UpdateOrderPurchase, UpdateOrderSales, UpdateOrderShipment, UpdateOrderReceipt, UpdateOrderSalesAsynchronously, UpdateOrderShipmentAsynchronously, LaunchAsyncUpdateOrderSales, LaunchAsyncUpdateOrderShipment, CheckAsyncSalesComplete, ListOpenOrdersAndReceipts]
+- name: Receipt
+  layer: serialization
+  surface: SOAP (SOMService)
+  operations: [GetReceipt, FetchUpdateOrderReceiptResult, ListOpenOrdersAndReceipts]
+- name: Delivery
+  layer: serialization
+  surface: SOAP (SOMService)
+  operations: [ChangeDeliveryNumber, FindDeliveryNumbers, VoidShipment]
+- name: SerialNumberRequest
+  layer: serialization
+  surface: SOAP (SerialNumberRequestService)
+  operations: [serialNumbersRequest]
+- name: ProductTrackShipment
+  layer: serialization
+  surface: SOAP (ProductTrackService)
+  operations: [PickShip, PickShipBasic]
+- name: Registration
+  layer: serialization
+  surface: SOAP (SOMService)
+  operations: [Register, FetchRegisterResult, MarketRelease, ReleaseProduct]
+
+- name: Incident
+  layer: work-management
+  surface: OPUS events + GraphQL
+  variants: [Direct Supplier, Indirect Supplier, External Manufacturing, Internal Manufacturing]
+  operations: [add, edit, copy, close, reopen, submitPartner]
+  event_prefix: 'agile-process-teams:'
+- name: ChangeRequest
+  layer: work-management
+  surface: OPUS events + GraphQL
+  operations: [add, edit, copy, close, reopen, toggleUserFollows]
+- name: Task
+  layer: work-management
+  surface: OPUS events + GraphQL
+  operations: [addTask, editTask, copyTask, closeTask, reopenTask, addSubTaskToTask, editSubTaskOnTask, closeSubTask, reopenSubtask, removeSubtask]
+- name: TaskTemplate
+  layer: work-management
+  surface: OPUS events + GraphQL
+  operations: [addTaskTemplate, editTaskTemplate, addSubTaskTemplate, editSubTaskonTemplate, removeSubTaskFromTemplate, readTemplateDetails, listSubtaskForTemplate]
+- name: Comment
+  layer: work-management
+  surface: OPUS events + GraphQL
+  description: Shared across Incident, ChangeRequest and Task.
+  operations: [add-comment, edit-comment, list-comments]
+- name: ActivityHistory
+  layer: work-management
+  surface: OPUS events + GraphQL
+  description: Append-only audit trail attached to every work-management object.
+- name: MasterData
+  layer: work-management
+  surface: GraphQL
+  variants: [Company, Partner, Product]
+  operations: [getCompanyMasterData, getPartnerMasterData, getProductMasterData]
+
+canonical_objects:
+  schema_dir: json-schema/
+  count: 37
+  common_envelope:
+    properties: [id, objectType, schemaId, schemaVersion, data]
+    note: >-
+      Every canonical object shares the same outer shape — an identity block plus a
+      `data` member carrying the business document — and declares
+      "$schema": "http://json-schema.org/draft-04/schema#".
+  families:
+  - application: multienterprise-process-connect
+    count: 32
+    objects:
+    - Canonical Purchase Order (v3, v4)
+    - Canonical Purchase Order Acknowledgement (v3)
+    - Canonical Invoice (v1, v2, v4)
+    - Canonical Payment Remittance (v1, v2)
+    - Canonical Credit Debit Adjustment (v1)
+    - Canonical Price Sales Catalog (v1, v2)
+    - Canonical Advance Ship Notice (v1, v4)
+    - Canonical Serialized Shipment Notice (v3)
+    - Canonical Warehouse Ship Order (v1)
+    - Canonical Warehouse Ship Advice (v1, v3)
+    - Canonical Warehouse Stock Transfer Ship Advice (v1, v3)
+    - Canonical Warehouse Stock Transfer Receipt Advice (v1, v2, v3)
+    - Canonical Inventory Balance (v1, v2)
+    - Canonical Inventory Update (v1, v2)
+    - Canonical Forecast Plan (v1, v2)
+    - Canonical Forecast Plan Response (v1)
+    - Canonical Batch Master (v1)
+    - Canonical Return Authorization (v1)
+    - canonical Product Activity (v1)
+  - application: b2b-transaction-processor
+    count: 2
+    objects:
+    - Canonical Acknowledgment Response (v1)
+    - Canonical Processing Acknowledgment (v1)
+  - application: common-traceability-application
+    count: 2
+    objects:
+    - Canonical Report Sales Shipment (v1, v3)
+  - application: integrated-business-network
+    count: 1
+    objects:
+    - Canonical Serialized Shipment Notice (v1)
+
+relationships:
+- from: SerialNumberHierarchy
+  to: SerializedEntity
+  type: has_many
+  via: aggregation parent/child
+- from: SerializedEntity
+  to: Lot
+  type: belongs_to
+  via: lot number
+- from: Order
+  to: SerializedEntity
+  type: has_many
+  via: shipment/receipt line serial numbers
+- from: Receipt
+  to: Order
+  type: belongs_to
+  via: order reference
+- from: Delivery
+  to: Order
+  type: belongs_to
+  via: delivery number
+- from: Canonical Purchase Order Acknowledgement
+  to: Canonical Purchase Order
+  type: belongs_to
+  via: purchase order reference
+- from: Canonical Advance Ship Notice
+  to: Canonical Purchase Order
+  type: belongs_to
+  via: purchase order reference
+- from: Canonical Invoice
+  to: Canonical Purchase Order
+  type: belongs_to
+  via: purchase order reference
+- from: Canonical Payment Remittance
+  to: Canonical Invoice
+  type: has_many
+  via: invoice reference
+- from: Canonical Warehouse Ship Advice
+  to: Canonical Warehouse Ship Order
+  type: belongs_to
+  via: ship order reference
+- from: Canonical Processing Acknowledgment
+  to: any inbound canonical message
+  type: belongs_to
+  via: file/message reference
+- from: Comment
+  to: Incident
+  type: belongs_to
+  via: business object id
+- from: Comment
+  to: ChangeRequest
+  type: belongs_to
+  via: business object id
+- from: Comment
+  to: Task
+  type: belongs_to
+  via: business object id
+- from: Task
+  to: TaskTemplate
+  type: belongs_to
+  via: templateId
+- from: Task
+  to: Task
+  type: has_many
+  via: subtasks
+- from: ActivityHistory
+  to: Incident
+  type: belongs_to
+- from: Incident
+  to: Process Network
+  type: belongs_to
+  via: processNetworkId
+x-note: >-
+  Relationships are derived from the operation surfaces and canonical object families
+  TraceLink publishes. TraceLink does not publish a single object reference with
+  id-prefixes, so no id-prefix table is asserted.

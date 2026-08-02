@@ -1,0 +1,102 @@
+generated: '2026-08-02'
+method: derived
+status: candidate
+x-authored-by: API Evangelist enrichment pipeline (not a TraceLink product)
+source: >-
+  wsdl/tracelink-serialized-operations-manager.wsdl,
+  wsdl/tracelink-product-track.wsdl,
+  wsdl/tracelink-serial-number-exchange.wsdl,
+  https://github.com/tracelink/code-samples/blob/main/EventNames.MD
+search:
+  performed: '2026-08-02'
+  result: none
+  checked:
+  - TraceLink docs and product pages (no MCP server documented)
+  - DNS for mcp.tracelink.com (NXDOMAIN)
+  - github.com/tracelink (12 repositories, none an MCP server)
+  - npm registry search for tracelink (no first-party package)
+  note: >-
+    TraceLink publishes no hosted or downloadable MCP server. The tool list below is a
+    CANDIDATE derived from operations TraceLink genuinely publishes — every tool maps to
+    a WSDL operation or to a fully qualified event name in TraceLink's own code-samples
+    repository. It is not a TraceLink artifact and must not be scored as one.
+server:
+  name: tracelink
+  transport: null
+  url: null
+tools:
+- name: som_commission
+  description: Commission serial numbers into serialized entities.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#Commission
+- name: som_decommission
+  description: Decommission serialized entities.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#Decommission
+- name: som_aggregate
+  description: Aggregate child serialized entities into a parent container.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#Aggregate
+- name: som_disaggregate
+  description: Disaggregate serialized entities from their parent.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#Disaggregate
+- name: som_get_serialized_entity
+  description: Retrieve a single serialized entity.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#GetSerializedEntity
+- name: som_get_serial_number_hierarchy
+  description: Retrieve the parent/child hierarchy for a serial number.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#GetSerialNumberHierarchy
+- name: som_serial_number_verification
+  description: Verify a serial number (DSCSA/VRS style verification).
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#SerialNumberVerification
+- name: som_get_lot_status
+  description: Retrieve the status of a lot.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#GetLotStatus
+- name: som_update_order_shipment
+  description: Record a shipment against an order.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#UpdateOrderShipment
+- name: som_update_order_receipt
+  description: Record a receipt against an order.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#UpdateOrderReceipt
+- name: som_list_open_orders_and_receipts
+  description: List open orders and receipts.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#ListOpenOrdersAndReceipts
+- name: som_market_release
+  description: Release product to market.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#MarketRelease
+- name: som_destroy
+  description: Record destruction of serialized product.
+  source_operation: wsdl/tracelink-serialized-operations-manager.wsdl#Destroy
+- name: product_track_pick_ship
+  description: Perform a Product Track pick-and-ship operation.
+  source_operation: wsdl/tracelink-product-track.wsdl#PickShip
+- name: snx_request_serial_numbers
+  description: Request a range of serial numbers from Serial Number Exchange.
+  source_operation: wsdl/tracelink-serial-number-exchange.wsdl#serialNumbersRequest
+- name: apt_add_direct_supplier_incident
+  description: Open a direct supplier incident in Agile Process Teams.
+  source_operation: 'opus events: agile-process-teams:add-direct-supplier-incident:v3'
+- name: apt_edit_direct_supplier_incident
+  description: Edit an existing direct supplier incident.
+  source_operation: 'opus events: agile-process-teams:edit-direct-supplier-incident:v3'
+- name: apt_close_direct_supplier_incident
+  description: Close a direct supplier incident.
+  source_operation: 'opus events: agile-process-teams:close-direct-supplier-incident:v2'
+- name: apt_submit_incident_to_partner
+  description: Submit a direct supplier incident to the trade partner.
+  source_operation: 'opus events: agile-process-teams:submit-direct-supplier-incident-to-partner:v1'
+- name: apt_add_comment_for_incident
+  description: Add a comment to an incident.
+  source_operation: 'opus events: agile-process-teams:add-comment-for-incident:v1'
+- name: apt_list_comments_for_incident
+  description: List comments on an incident.
+  source_operation: 'opus events: agile-process-teams:list-comments-for-incident:v1'
+- name: apt_get_activity_history_for_incident
+  description: Retrieve the activity history for an incident.
+  source_operation: 'opus events: agile-process-teams:get-activity-history-for-incident:v1'
+coverage:
+  wsdl_operations_total: 43
+  wsdl_operations_mapped: 15
+  event_names_published: 29
+  event_names_mapped: 7
+  note: >-
+    Deliberately partial. Only the marquee flows are mapped; the remaining WSDL
+    operations and event names are in the source artifacts and can be added when a real
+    server is built.

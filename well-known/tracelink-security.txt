@@ -1,0 +1,4 @@
+Contact: mailto:security-alerts@tracelink.com
+Expires: 2027-09-27T00:00:00.000Z
+Encryption: https://www.tracelink.com/pgp-key.txt
+Policy: https://www.tracelink.com/legal-and-trust/vulnerability-disclosure-policy

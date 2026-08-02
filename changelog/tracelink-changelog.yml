@@ -1,0 +1,66 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  TraceLink "What's new" release pages on opus.tracelink.com and
+  tracelink.com/resources/tracelink-university
+scheme: calendar release train (YYYY.N), with named platform releases
+current_version: '2026.1'
+changelog_urls:
+- name: What's new in the OPUS Platform
+  url: https://opus.tracelink.com/documentation/val/en-US/opus_platform_ux/Content/topics/whats_new/plat_2025_01_release_info.htm
+- name: What's new in the OPUS Solution Environment, version 6.0.0
+  url: https://www.tracelink.com/resources/tracelink-university/whats-new-opus-solution-environment-version-600-release
+- name: What's new in the OPUS Solution Environment, version 5.0.0
+  url: https://www.tracelink.com/resources/tracelink-university/whats-new-opus-solution-environment-version-500-release
+- name: Product Release and Roadmap Special Interest Group
+  url: https://www.tracelink.com/resources/community/product-release-and-roadmap-sig.md
+- name: News room (release announcements)
+  url: https://www.tracelink.com/about/news-room
+entries:
+- version: '2026.1'
+  date: null
+  type: release train
+  highlights:
+  - Current documentation train; all eleven API guides republished at 2026.1.
+  evidence: 'https://opus.tracelink.com/documentation/2026.1/en-US/api/*/pdfs/*_api_guide_2026.1.pdf (HTTP 200, application/pdf)'
+- version: '2025.5'
+  date: null
+  type: release train
+  highlights:
+  - Prior documentation train; full API guide set published.
+  evidence: 'https://opus.tracelink.com/documentation/2025.5/en-US/api/*/pdfs/*_api_guide_2025.5.pdf (HTTP 200, application/pdf)'
+- version: 'Orff 2025.1.14'
+  date: '2025-08-14'
+  type: point release
+  highlights:
+  - Available on Validation and Production.
+- version: 'Orff 2025.1.13'
+  date: '2025-08-07'
+  type: point release
+  highlights:
+  - Available on Validation and Production.
+- version: 'Orff 2025.1.12'
+  date: '2025-07-29'
+  type: point release
+  highlights:
+  - Available on Validation and Production.
+- version: 'OPUS Solution Environment 6.0.0'
+  date: '2025-04-08'
+  type: application release
+  highlights:
+  - Available on Validation and Production.
+- version: 'OPUS Platform Orff 2025.1.0'
+  date: '2025-04-05'
+  type: release train
+  highlights:
+  - First Orff train available on Validation and Production.
+- version: 'OPUS Solution Environment 5.1.0'
+  date: '2025-01-28'
+  type: application release
+  highlights:
+  - Available on Validation and Production.
+x-note: >-
+  Each "What's new" page is per application per release rather than one consolidated
+  dated changelog feed. Entry dates above are the availability dates TraceLink states
+  on those pages; entries without a stated date are recorded with date null rather than
+  guessed.

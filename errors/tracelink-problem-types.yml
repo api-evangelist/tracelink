@@ -1,0 +1,104 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  https://opus.tracelink.com/documentation/2026.1/en-US/api/smart-event-manager/pdfs/smart_event_manager_api_guide_2026.1.pdf
+  (HTTP Response Status Codes; Set Event Errors; Get Event Errors; Get Result Errors)
+  and https://github.com/tracelink/code-samples/blob/main/authentication.md
+format: vendor-envelope
+rfc9457: false
+envelope:
+  description: >-
+    TraceLink does not return application/problem+json. Synchronous OPUS calls return
+    the platform's own JSON envelope, where the failure is signalled on the response
+    header rather than in a problem document.
+  fields:
+  - name: header.isErr
+    type: boolean
+    description: True when the call failed.
+  - name: header.errCode
+    type: string
+    description: Result code string, e.g. 200_OK on success.
+  - name: header.licensePlate
+    type: string
+    description: Correlation identifier to quote when raising a support ticket.
+  example_success:
+    header:
+      headerVersion: 1
+      eventName: 'authorization-manager:generate-apiKeyCredentials-response:v1'
+      isErr: false
+      errCode: 200_OK
+
+http_status:
+- status: 200
+  title: OK
+  description: The request was successful. For GET, the resource has been fetched.
+  class: success
+- status: 307
+  title: Temporary Redirect
+  description: >-
+    The client must get the requested resource at another URI with the same HTTP
+    method that was used in the prior request.
+  class: redirect
+- status: 400
+  title: Bad Request
+  description: The server could not understand the request due to invalid syntax.
+  class: client
+- status: 401
+  title: Unauthorized
+  description: >-
+    The client is unauthenticated, not allowed access, and should re-request
+    credentials.
+  class: client
+- status: 403
+  title: Forbidden
+  description: >-
+    The request is valid and the client is authenticated, but the client is not
+    allowed access rights to the content.
+  class: client
+- status: 404
+  title: Not Found
+  description: >-
+    The server cannot find the requested item. This can also mean the endpoint is
+    valid but the resource does not exist.
+  class: client
+- status: 500
+  title: Internal Server Error
+  description: The server has encountered an unknown error.
+  class: server
+- status: 502
+  title: Bad Gateway
+  description: >-
+    The server is working as a gateway to handle the request and received an invalid
+    response.
+  class: server
+- status: 503
+  title: Service Unavailable
+  description: The server is not ready to handle the request.
+  class: server
+- status: 504
+  title: Gateway Timeout
+  description: The server is acting as a gateway and cannot get a response in time.
+  class: server
+
+message_error_catalogs:
+  description: >-
+    Each asynchronous message in each API guide ships its own Errors Table — a coded
+    list of validation and processing errors with the message text and cause. These
+    are published per message inside the guide PDFs rather than as a single machine
+    readable registry, so they are referenced here rather than reproduced.
+  guides:
+  - name: Administration
+    url: https://opus.tracelink.com/documentation/2026.1/en-US/api/administration/pdfs/admin_api_guide_2026.1.pdf
+  - name: Compliance Reporting (asynchronous)
+    url: https://opus.tracelink.com/documentation/2026.1/en-US/api/compliance-reporting/async/pdfs/comp_api_guide_2026.1.pdf
+  - name: Processing Response
+    url: https://opus.tracelink.com/documentation/2026.1/en-US/api/processing-response/pdfs/process_resp_api_guide_2026.1.pdf
+  - name: Smart Event Manager
+    url: https://opus.tracelink.com/documentation/2026.1/en-US/api/smart-event-manager/pdfs/smart_event_manager_api_guide_2026.1.pdf
+  observed_patterns:
+  - 'File <inFilename> is a potential duplicate match with file <origFilename> — the inbound file is a duplicate.'
+  - 'Subscriber company is inactive on TraceLink network.'
+  - 'The Set Event Request cannot be processed. The <duplicate namespace field> is specified more than once.'
+  operator_recovery:
+  - Park and Retry — hold a failed asynchronous message for operator retry.
+  - Reprocess — re-run inbound delivery creation from the Info Exchange report.

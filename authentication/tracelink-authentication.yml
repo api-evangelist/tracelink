@@ -1,0 +1,83 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  https://opus.tracelink.com/documentation/2026.1/en-US/api/smart-event-manager/pdfs/smart_event_manager_api_guide_2026.1.pdf
+  and https://github.com/tracelink/code-samples/blob/main/authentication.md
+docs:
+- https://github.com/tracelink/code-samples/blob/main/authentication.md
+- https://opus.tracelink.com/documentation/2026.1/en-US/api/smart-event-manager/pdfs/smart_event_manager_api_guide_2026.1.pdf
+summary:
+  types:
+  - http
+  http_schemes:
+  - basic
+  - bearer
+  api_key_in: []
+  oauth2_flows: []
+  note: >-
+    TraceLink publishes no OAuth 2.0 or OpenID Connect surface for its APIs. Every
+    documented surface authenticates with HTTP Basic (RFC 7617) or, for the
+    short-lived bootstrap step only, a Bearer session token. There is therefore no
+    scope model and no scopes/ artifact for this provider.
+schemes:
+- name: SmartEventManagerBasic
+  type: http
+  scheme: basic
+  description: >-
+    Smart Event Manager supports user-based authentication using HTTP Basic
+    Authentication. The Base64 encoding of username:password is sent in the
+    Authorization header alongside Content-Type: application/json.
+  applies_to:
+  - TraceLink Smart Event Manager REST API
+  source: smart_event_manager_api_guide_2026.1.pdf (Getting Started with REST)
+- name: OpusApiKeyBasic
+  type: http
+  scheme: basic
+  description: >-
+    OPUS Platform API calls authenticate with a long-lived API key and API secret
+    pair. The two values are joined as "apiKey:apiSecret", Base64 encoded, and sent
+    as "Authorization: Basic <encoded>". TraceLink documents the key and secret as
+    static values that do not expire.
+  applies_to:
+  - TraceLink OPUS Platform Event API
+  - TraceLink OPUS GraphQL API
+  source: https://github.com/tracelink/code-samples/blob/main/authentication.md
+- name: OpusSessionBearer
+  type: http
+  scheme: bearer
+  description: >-
+    A short-lived session token (the browser local-storage value
+    _store_js_production_token) is used as a Bearer token for exactly one call —
+    the authorization-manager:generate-apiKeyCredentials:v1 event — which exchanges
+    it for the long-lived API key/secret pair. It is a bootstrap credential, not a
+    general-purpose API token.
+  applies_to:
+  - TraceLink OPUS Platform Event API
+  source: https://github.com/tracelink/code-samples/blob/main/authentication.md
+- name: SoapBasic
+  type: http
+  scheme: basic
+  description: >-
+    The SOAP services on api.tracelink.com (Serialized Operations Manager, Product
+    Track, Serial Number Exchange) authenticate over HTTPS with HTTP Basic
+    credentials issued by TraceLink; the guides cite RFC 7617.
+  applies_to:
+  - TraceLink Serialized Operations Manager (SOAP)
+  - TraceLink Product Track (SOAP)
+  - TraceLink Serial Number Exchange (SOAP)
+  source: https://opus.tracelink.com/documentation/2026.1/en-US/api/som/soap/pdfs/som_soap_api_guide_2026.1.pdf
+tenancy_context:
+  description: >-
+    Beyond the credential, OPUS requests carry tenancy routing values that select
+    the company, network, and dataspace the call executes in. They are required and
+    are effectively part of the authorization context.
+  fields:
+  - name: ownerId
+    where: request body header (events API) / companyId header (GraphQL)
+    description: The Owner company associated with the request.
+  - name: processNetworkId
+    where: request body header (events API) / processNetworkId header (GraphQL)
+    description: The network within the Owner company containing the process.
+  - name: dataspace
+    where: request body header (events API) / Dataspace header (GraphQL)
+    description: The dataspace inside the environment where the request is made (e.g. "default").
