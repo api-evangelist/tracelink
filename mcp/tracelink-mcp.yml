@@ -2,10 +2,7 @@ generated: '2026-08-02'
 method: derived
 status: candidate
 x-authored-by: API Evangelist enrichment pipeline (not a TraceLink product)
-source: >-
-  wsdl/tracelink-serialized-operations-manager.wsdl,
-  wsdl/tracelink-product-track.wsdl,
-  wsdl/tracelink-serial-number-exchange.wsdl,
+source: wsdl/tracelink-serialized-operations-manager.wsdl, wsdl/tracelink-product-track.wsdl, wsdl/tracelink-serial-number-exchange.wsdl,
   https://github.com/tracelink/code-samples/blob/main/EventNames.MD
 search:
   performed: '2026-08-02'
@@ -15,11 +12,10 @@ search:
   - DNS for mcp.tracelink.com (NXDOMAIN)
   - github.com/tracelink (12 repositories, none an MCP server)
   - npm registry search for tracelink (no first-party package)
-  note: >-
-    TraceLink publishes no hosted or downloadable MCP server. The tool list below is a
-    CANDIDATE derived from operations TraceLink genuinely publishes — every tool maps to
-    a WSDL operation or to a fully qualified event name in TraceLink's own code-samples
-    repository. It is not a TraceLink artifact and must not be scored as one.
+  note: TraceLink publishes no hosted or downloadable MCP server. The tool list below is a CANDIDATE derived
+    from operations TraceLink genuinely publishes — every tool maps to a WSDL operation or to a fully
+    qualified event name in TraceLink's own code-samples repository. It is not a TraceLink artifact and
+    must not be scored as one.
 server:
   name: tracelink
   transport: null
@@ -96,7 +92,11 @@ coverage:
   wsdl_operations_mapped: 15
   event_names_published: 29
   event_names_mapped: 7
-  note: >-
-    Deliberately partial. Only the marquee flows are mapped; the remaining WSDL
-    operations and event names are in the source artifacts and can be added when a real
-    server is built.
+  note: Deliberately partial. Only the marquee flows are mapped; the remaining WSDL operations and event
+    names are in the source artifacts and can be added when a real server is built.
+deployment:
+  mode: none
+  verified: derived
+  tools: 22
+  checked: '2026-08-12'
+  source: catalog MCP census
