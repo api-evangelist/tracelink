@@ -14,7 +14,7 @@ description: 'TraceLink, Inc. is a Massachusetts-based supply chain digitalizati
 url: https://raw.githubusercontent.com/api-evangelist/tracelink/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-02'
 modified: '2026-08-02'
 image: https://www.tracelink.com/themes/custom/tracelink/logo.svg
