@@ -96,6 +96,10 @@ apis:
   humanURL: https://github.com/tracelink/code-samples
   baseURL: https://opus.tracelink.com/api/events
   tags:
+  - Event-Driven
+  - REST
+  - Workflows
+  tags_raw:
   - Event Driven
   - REST
   - Workflow
@@ -112,6 +116,9 @@ apis:
   humanURL: https://github.com/tracelink/code-samples/tree/main/GraphQL
   baseURL: https://opus.tracelink.com/api/graphql
   tags:
+  - GraphQL
+  - Workflows
+  tags_raw:
   - GraphQL
   - Workflow
   properties:
