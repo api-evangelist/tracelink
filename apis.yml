@@ -107,7 +107,7 @@ apis:
   humanURL: https://github.com/tracelink/code-samples
   baseURL: https://opus.tracelink.com/api/events
   tags:
-  - Event-Driven
+  - Event Driven
   - REST
   - Workflows
   tags_raw:
