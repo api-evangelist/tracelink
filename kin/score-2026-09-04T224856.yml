@@ -1,28 +1,31 @@
-# Kin Score artifact — tracelink — 2026-08-12T193225
+# Kin Score artifact — tracelink — 2026-09-04T224856
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: tracelink
-  schema_version: 0.11.0
-  scored_at: '2026-08-12'
-  run_ts: 2026-08-12T193225
-  composite: 51.3
+  schema_version: 0.18.3
+  scored_at: '2026-09-04'
+  run_ts: 2026-09-04T224856
+  composite: 52.1
   band: developing
   facets:
-    discoverability: 92.6
-    contract_quality: 51.6
-    governance: 12.5
-    operational_transparency: 31.6
-    developer_ergonomics: 62.5
-    commercial_clarity: 60.5
+    discoverability: 81.5
+    contract_quality: 48.1
+    governance: 18.2
+    operational_transparency: 28.9
+    developer_ergonomics: 56.5
+    commercial_clarity: 53.9
+    contract_governance: 18.2
+    access_clarity: 53.9
   agent_readiness:
-    score: 42.3
-    band: agent-ready
+    score: 24.8
+    band: agent-aware
     dimensions:
       spec_presence: true
       agentic_access: false
-      mcp_server: derived
-      auth_clarity: true
+      reversibility_documented: false
+      mcp_server: false
+      auth_clarity: bearer
       idempotency: false
       error_semantics: documented
       openapi_examples: documented
@@ -30,9 +33,13 @@ kin_score:
       event_surface_described: true
       agent_skills: derived
       well_known_catalog: false
-      consent_identity: true
+      consent_identity: false
       agent_card: false
       dry_run_mode: false
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
   regulatory:
     applies: true
     regime: Health
