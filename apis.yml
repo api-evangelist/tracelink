@@ -41,7 +41,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-08-02'
-modified: '2026-08-02'
+modified: '2026-10-06'
 image: https://www.tracelink.com/themes/custom/tracelink/logo.svg
 tags:
 - Company
@@ -155,6 +155,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://www.tracelink.com/rss.xml
+  type: BlogRSS
 - type: VulnerabilityDisclosure
   url: security/tracelink-vulnerability-disclosure.yml
 - type: DomainSecurity
