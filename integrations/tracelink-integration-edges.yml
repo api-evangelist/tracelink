@@ -1,0 +1,24 @@
+generated: '2026-10-13'
+method: searched
+checked:
+- https://aws.amazon.com/marketplace/
+marketplace_apps: []
+edges:
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=5138b745-57e7-45aa-b86e-22fe1ef875fc
+  listing_count: 4
+  apps:
+  - Global Serialization, Traceability, and Compliance Platform
+  - Supply Chain Work Management
+  - DSCSA Compliance and Product Availability Intelligence Solution
+  - Multienterprise Information Network Tower (MINT)
+  seller_name: TraceLink
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
