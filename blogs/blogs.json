@@ -2,6 +2,17 @@
   "repo": "tracelink",
   "feeds": [
     {
+      "source": "https://www.tracelink.com/rss.xml",
+      "feed_url": "https://www.tracelink.com/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.tracelink.com/about/news-room",
+      "error": "HTTPError"
+    },
+    {
       "source": "https://www.tracelink.com/support",
       "feed_url": "https://www.tracelink.com/support",
       "title": "",
@@ -10,5 +21,5 @@
     }
   ],
   "post_count": 0,
-  "fetched": "2026-10-03T12:30:02Z"
+  "fetched": "2026-10-10T13:15:00Z"
 }
